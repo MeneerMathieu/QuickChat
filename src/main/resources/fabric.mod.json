@@ -13,15 +13,15 @@
   "environment": "client",
   "entrypoints": {
     "main": [
-      "net.winniethedampoeh.quickchat.Quickchat"
+      "net.winniethedampoeh.quickchat.QuickChat"
     ]
   },
   "mixins": [
     "quickchat.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.13.0",
+    "fabricloader": ">=0.10.0",
     "fabric": "*",
-    "minecraft": "1.18.1"
+    "minecraft": ">=1.16.0"
   }
 }
