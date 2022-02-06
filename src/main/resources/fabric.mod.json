@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "quickchat",
   "version": "${version}",
-  "name": "Quickchat",
+  "name": "QuickChat",
   "description": "A clientside quickchat mod for Fabric.",
   "authors": [
     "WinnieTheDampoeh"
@@ -16,9 +16,6 @@
       "net.winniethedampoeh.quickchat.QuickChat"
     ]
   },
-  "mixins": [
-    "quickchat.mixins.json"
-  ],
   "depends": {
     "fabricloader": ">=0.10.0",
     "fabric": "*",
