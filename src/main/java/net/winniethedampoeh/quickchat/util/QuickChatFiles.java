@@ -1,9 +1,12 @@
 package net.winniethedampoeh.quickchat.util;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.winniethedampoeh.quickchat.QuickChat;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
@@ -11,7 +14,6 @@ public class QuickChatFiles {
 
     private static final String directoryPath = "./config";
     private static final String filePath = "./config/quickchat.json";
-    File file = new File(filePath);
     private static final String defaultConfig = """
         {
             "credits": "This was said by the QuickChat mod by WinnieTheDampoeh.",
@@ -49,9 +51,7 @@ public class QuickChatFiles {
 
         File file = new File(filePath);
         if (file.createNewFile()){
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath), StandardCharsets.UTF_8));
-            writer.write(defaultConfig);
-            writer.close();
+            writeDefaultConfig();
         }
 
         String config = "";
@@ -62,15 +62,21 @@ public class QuickChatFiles {
         }
         reader.close();
 
+        Gson gson = new Gson();
+        Type mapType = new TypeToken<Map<String, String>>() {}.getType();
 
-        Object gson;
         try {
-            gson = new Gson().fromJson(config, Object.class);
-        }catch (Exception e){
-            gson = null;
+            this.quickChats = gson.fromJson(config, mapType);
+        } catch (Exception e) {
+            QuickChat.LOGGER.warn("Unable to load config file. Loading default config. (Incorrect JSON)");
+            this.quickChats = gson.fromJson(defaultConfig, mapType);
         }
+    }
 
-        this.quickChats = (Map<String, String>) gson;
+    private void writeDefaultConfig() throws IOException {
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath), StandardCharsets.UTF_8));
+        writer.write(defaultConfig);
+        writer.close();
     }
 
     public Map<String, String> getQuickChats(){
@@ -81,8 +87,7 @@ public class QuickChatFiles {
         Map<String, String> map = this.quickChats;
         map.put(literal, message);
         this.quickChats = map;
-        Gson gson = new Gson();
-        QuickChat.LOGGER.warn(map);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try(FileWriter writer = new FileWriter(filePath, StandardCharsets.UTF_8)) {
             gson.toJson(map, writer);
             writer.flush();
@@ -98,7 +103,7 @@ public class QuickChatFiles {
         }
         map.remove(literal);
         this.quickChats = map;
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try(FileWriter writer = new FileWriter(filePath, StandardCharsets.UTF_8)){
             gson.toJson(map, writer);
             writer.flush();

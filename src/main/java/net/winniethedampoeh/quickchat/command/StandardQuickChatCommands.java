@@ -13,7 +13,7 @@ import net.winniethedampoeh.quickchat.QuickChat;
 import java.io.IOException;
 import java.util.Map;
 
-public class AddQuickChatCommand {
+public class StandardQuickChatCommands {
 
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher){
         ClientCommandRegistrationCallback.EVENT.register((dispatcher1, registryAccess) -> dispatcher1.register(ClientCommandManager.literal("quickchat")
