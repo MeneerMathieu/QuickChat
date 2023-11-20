@@ -3,7 +3,7 @@
 ![QuickChat icon](https://github.com/MeneerMathieu/QuickChat/assets/61655741/29b04c3e-9e6d-4f0b-b026-e248344af1d6)
 
 
-Have you ever wanted to quickly type (╯°□°)╯︵ ┻━┻ into chat after dieing? Then QuickChat is the mod for you!  Simply type <code>/tableflip</code> and your dreams will come true.
+Have you ever wanted to quickly type (╯°□°)╯︵ ┻━┻ into chat after dying? Then QuickChat is the mod for you!  Simply type <code>/tableflip</code> and your dreams will come true.
 
 QuickChat adds a whole ton of custom chat messages into Minecraft. It also allows you to add your own QuickChats.
 
