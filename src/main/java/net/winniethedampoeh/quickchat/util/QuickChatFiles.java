@@ -6,7 +6,6 @@ import net.winniethedampoeh.quickchat.QuickChat;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
-import java.util.Scanner;
 
 public class QuickChatFiles {
 
@@ -74,19 +73,34 @@ public class QuickChatFiles {
         this.quickChats = (Map<String, String>) gson;
     }
 
-    public Object getQuickChats(){
+    public Map<String, String> getQuickChats(){
         return this.quickChats;
     }
 
-    public void addQuickChat(String literal, String message) throws IOException {
+    public void addQuickChat(String literal, String message) {
         Map<String, String> map = this.quickChats;
         map.put(literal, message);
         this.quickChats = map;
-        Object o = map;
         Gson gson = new Gson();
         QuickChat.LOGGER.warn(map);
-        try(FileWriter writer = new FileWriter(filePath)) {
-            gson.toJson(o, writer);
+        try(FileWriter writer = new FileWriter(filePath, StandardCharsets.UTF_8)) {
+            gson.toJson(map, writer);
+            writer.flush();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void removeQuickChat(String literal) throws IOException, NullPointerException {
+        Map<String, String> map = this.quickChats;
+        if (map.get(literal) == null){
+            throw new NullPointerException(literal + " is not a used command.");
+        }
+        map.remove(literal);
+        this.quickChats = map;
+        Gson gson = new Gson();
+        try(FileWriter writer = new FileWriter(filePath, StandardCharsets.UTF_8)){
+            gson.toJson(map, writer);
             writer.flush();
         }catch (Exception e){
             e.printStackTrace();
