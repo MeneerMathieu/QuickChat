@@ -7,7 +7,9 @@
   "authors": [
     "WinnieTheDampoeh"
   ],
-  "contact": {},
+  "contact": {
+    "issues": "https://github.com/MeneerMathieu/QuickChat/issues"
+  },
   "license": "LGPL-3.0",
   "icon": "assets/quickchat/icon.png",
   "environment": "client",
@@ -18,7 +20,8 @@
   },
   "depends": {
     "fabricloader": ">=0.10.0",
-    "fabric": "*",
-    "minecraft": ">=1.16.0"
+    "fabric-api": ">=0.75.1",
+    "minecraft": ">=1.19.3",
+    "java": ">=17"
   }
 }
