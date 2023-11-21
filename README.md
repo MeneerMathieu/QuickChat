@@ -1,7 +1,8 @@
+
 # QuickChat
 
-![QuickChat icon](https://github.com/MeneerMathieu/QuickChat/assets/61655741/29b04c3e-9e6d-4f0b-b026-e248344af1d6)
-
+[![](https://cf.way2muchnoise.eu/full_940840_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/quickchat)
+![](https://img.shields.io/modrinth/dt/vgOL6ynu?style=flat&logo=modrinth&logoColor=%2300AF5C&labelColor=%23FFFFFF&color=%23FFFFFF&link=https%3A%2F%2Fmodrinth.com%2Fmod%2Fquickchat)
 
 Have you ever wanted to quickly type (╯°□°)╯︵ ┻━┻ into chat after dying? Then QuickChat is the mod for you!  Simply type <code>/tableflip</code> and your dreams will come true.
 
