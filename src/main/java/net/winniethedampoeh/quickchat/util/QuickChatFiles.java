@@ -15,43 +15,45 @@ public class QuickChatFiles {
     private static final String directoryPath = "./config";
     private static final String filePath = "./config/quickchat.json";
     private static final String defaultConfig = """
-        {
-            "credits": "This was said by the QuickChat mod by WinnieTheDampoeh.",
-            "tableflip": "(╯°□°）╯︵ ┻━┻",
-            "unflip": "┬─┬ ノ( ゜-゜ノ)",
-            "shrug": "¯\\\\_(ツ)_/¯",
-            "sleep": "(∪.∪ )...zzz",
-            "party": "(づ￣ 3￣)づ",
-            "cry": "`(*>﹏<*)′",
-            "hypnotized": "◑﹏◐",
-            "gimme": "༼ つ ◕_◕ ༽つ",
-            "bear": "ฅʕ•̫͡•ʔฅ",
-            "doggo": "(ʘᴥʘ)",
-            "cat":  "./ᐠ｡ꞈ｡ᐟ\\\\.",
-            "panic": "(っ °Д °;)っ",
-            "crying": "（；´д｀）ゞ",
-            "vertigo": "{{{(>_<)}}}",
-            "inspect": "ಠಿ_ಠ",
-            "facepalm": "(>ლ)",
-            "muscels": "ᕦ(ò_óˇ)ᕤ",
-            "fart": "○|￣|_ =3",
-            "shocked": "(⊙_(⊙_⊙)_⊙)",
-            "what?": "(⊙_⊙)？",
-            "stare": "◉_◉",
-            "how": "¯\\\\(°_o)/¯",
-            "wave": "(●>ω<)ﾉﾞ"
-        }
-        """;
+            {
+                "credits": "This was said by the QuickChat mod by WinnieTheDampoeh.",
+                "tableflip": "(╯°□°)╯ ︵ ┻━┻",
+                "unflip": "┬─┬ ノ( ゜-゜ノ)",
+                "shrug": "¯\\\\_(ツ)_/¯",
+                "sleep": "(∪.∪ )...ᶻᶻᶻ",
+                "party": "(づ￣ 3￣)づ",
+                "cry": "`(*>_<*)′",
+                "hypnotized": "◑_◐",
+                "gimme": "༼ つ ◕_◕ ༽つ",
+                "bear": "ฅʕ●.●ʔฅ",
+                "doggo": "(ʘᴥʘ)",
+                "cat":  "./ᐠ｡ꞈ｡ᐟ\\\\.",
+                "panic": "(っ °Д °;)っ",
+                "crying": "（；´д｀）ゞ",
+                "inspect": "ಠಿ_ಠ",
+                "facepalm": "(-ლ)",
+                "muscels": "ᕦ(ò_óˇ)ᕤ",
+                "fart": "○|￣|_ =3",
+                "shocked": "(⊙_(⊙_⊙)_⊙)",
+                "what?": "(⊙_⊙)？",
+                "stare": "◉_◉",
+                "how": "¯\\\\(°_o)/¯",
+                "wave": "(●ω●)/"
+            }
+            """;
 
     private Map<String, String> quickChats;
 
     public QuickChatFiles() throws IOException {
         File directory = new File(directoryPath);
-        directory.mkdir();
+        if(directory.mkdir()) {
+            QuickChat.LOGGER.debug("Config folder created");
+        }
 
         File file = new File(filePath);
         if (file.createNewFile()){
             writeDefaultConfig();
+            QuickChat.LOGGER.debug("Default config written");
         }
 
         String config = "";
