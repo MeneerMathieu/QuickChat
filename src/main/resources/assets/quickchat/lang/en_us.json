@@ -1,0 +1,12 @@
+{
+  "title.quickchat.config" :  "QuickChat settings",
+
+  "category.quickchat.general": "General",
+
+  "entry.quickchat.quickchats": "QuickChats",
+  "entry.quickchat.quickchat": "QuichChat",
+  "entry.quickchat.message": "Message",
+
+  "example.quickchat.quickchat": "quickchat",
+  "example.quickchat.message": "message"
+}

@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "net.winniethedampoeh.quickchat.QuickChat"
+    ],
+    "modmenu" : [
+        "net.winniethedampoeh.quickchat.config.ModMenuIntegration"
     ]
   },
   "depends": {

@@ -11,8 +11,9 @@ import java.io.IOException;
 
 public class QuickChat implements ModInitializer {
 
+    public static String MOD_ID = "quickchat";
     public static QuickChat INSTANCE;
-    public static final Logger LOGGER = LogManager.getLogger("quickchat");
+    public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     public final MinecraftClient minecraftClient = MinecraftClient.getInstance();
     public QuickChatFiles quickChats;
 
