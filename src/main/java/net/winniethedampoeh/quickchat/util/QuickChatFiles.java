@@ -22,11 +22,10 @@ public class QuickChatFiles {
                 "shrug": "¯\\\\_(ツ)_/¯",
                 "sleep": "(∪.∪ )...ᶻᶻᶻ",
                 "party": "(づ￣ 3￣)づ",
-                "cry": "`(*>_<*)′",
                 "hypnotized": "◑_◐",
                 "gimme": "༼ つ ◕_◕ ༽つ",
                 "bear": "ฅʕ●.●ʔฅ",
-                "doggo": "(ʘᴥʘ)",
+                "doggo": "ʕʘᴥʘʔ",
                 "cat":  "./ᐠ｡ꞈ｡ᐟ\\\\.",
                 "panic": "(っ °Д °;)っ",
                 "crying": "（；´д｀）ゞ",
@@ -38,7 +37,13 @@ public class QuickChatFiles {
                 "what?": "(⊙_⊙)？",
                 "stare": "◉_◉",
                 "how": "¯\\\\(°_o)/¯",
-                "wave": "(●ω●)/"
+                "wave": "(●ω●)/",
+                "kisses": "( ˘ ³˘)♥",
+                "dj": "ヽ(⌐■_■)ノ♪♬",
+                "sad": "(๏̯๏)",
+                "flex": "ᕙ(◕‿◕)ᕗ",
+                "skull": "☠",
+                "smiley": "☻"
             }
             """;
 
