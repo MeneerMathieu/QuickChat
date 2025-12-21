@@ -6,8 +6,8 @@ import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.winniethedampoeh.quickchat.QuickChat;
 
 import java.io.IOException;
@@ -44,24 +44,24 @@ public class StandardQuickChatCommands {
         for(Map.Entry<String, String> entry : QuickChat.INSTANCE.quickChats.getQuickChats().entrySet()){
             message.append("\n").append(entry.getKey()).append(" - ").append(entry.getValue());
         }
-        ctx.getSource().sendFeedback(Text.literal(message.toString()));
+        ctx.getSource().sendFeedback(Component.literal(message.toString()));
     }
 
     private static int addQuickChat(CommandContext<FabricClientCommandSource> ctx, CommandDispatcher<FabricClientCommandSource> dispatcher, String literal, String message) throws IOException {
         QuickChat.INSTANCE.quickChats.addQuickChat(literal, message);
         QuickChatCommands.registerCommand(dispatcher, literal, message);
-        ctx.getSource().sendFeedback(Text.literal(Formatting.DARK_GREEN + "Command has been added, you can use it after restart."));
+        ctx.getSource().sendFeedback(Component.literal(ChatFormatting.DARK_GREEN + "Command has been added, you can use it after restart.") );
         return 1;
     }
 
     private static int removeQuickChat(CommandContext<FabricClientCommandSource> ctx, CommandDispatcher<FabricClientCommandSource> dispatcher, String literal){
         try {
             QuickChat.INSTANCE.quickChats.removeQuickChat(literal);
-            ctx.getSource().sendFeedback(Text.literal(Formatting.GREEN + "Command has been removed. Restart needed to update register."));
+            ctx.getSource().sendFeedback(Component.literal(ChatFormatting.GREEN + "Command has been removed. Restart needed to update register."));
         } catch (IOException e) {
             e.printStackTrace();
         }catch (NullPointerException e){
-            ctx.getSource().sendFeedback(Text.literal(Formatting.RED + e.getMessage()));
+            ctx.getSource().sendFeedback(Component.literal(ChatFormatting.RED + e.getMessage()));
         }
         return 1;
     }

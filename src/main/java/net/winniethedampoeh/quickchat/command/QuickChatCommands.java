@@ -35,7 +35,7 @@ public class QuickChatCommands{
     }
 
     public static int sendMessage(CommandContext<FabricClientCommandSource> ctx, String message, String extra){
-        Objects.requireNonNull(ctx.getSource().getClient().getNetworkHandler()).sendChatMessage(message + " " +  extra);
+        Objects.requireNonNull(ctx.getSource().getClient().getConnection()).sendChat(message + " " +  extra);
         return 1;
     }
 }
