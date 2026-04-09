@@ -3,7 +3,7 @@ package net.winniethedampoeh.quickchat.command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.ChatFormatting;
@@ -16,10 +16,10 @@ import java.util.Map;
 public class StandardQuickChatCommands {
 
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher){
-        ClientCommandRegistrationCallback.EVENT.register((dispatcher1, registryAccess) -> dispatcher1.register(ClientCommandManager.literal("quickchat")
-                .then(ClientCommandManager.literal("add")
-                        .then(ClientCommandManager.argument("name", StringArgumentType.word())
-                                .then(ClientCommandManager.argument("QuickChat", StringArgumentType.greedyString())
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher1, registryAccess) -> dispatcher1.register(ClientCommands.literal("quickchat")
+                .then(ClientCommands.literal("add")
+                        .then(ClientCommands.argument("name", StringArgumentType.word())
+                                .then(ClientCommands.argument("QuickChat", StringArgumentType.greedyString())
                                         .executes(context -> {
                                             try {
                                                 return addQuickChat(context, dispatcher, StringArgumentType.getString(context, "name"), StringArgumentType.getString(context, "QuickChat"));
@@ -28,13 +28,13 @@ public class StandardQuickChatCommands {
                                                 return 1;
                                             }
                                         }))))
-                .then(ClientCommandManager.literal("help")
+                .then(ClientCommands.literal("help")
                         .executes(context -> {
                             sendHelp(context, dispatcher);
                             return 1;
                         }))
-                .then(ClientCommandManager.literal("remove")
-                        .then(ClientCommandManager.argument("literal", StringArgumentType.greedyString())
+                .then(ClientCommands.literal("remove")
+                        .then(ClientCommands.argument("literal", StringArgumentType.greedyString())
                                 .executes(context -> removeQuickChat(context, dispatcher, StringArgumentType.getString(context, "literal"))))))
         );
     }

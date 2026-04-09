@@ -3,7 +3,7 @@ package net.winniethedampoeh.quickchat.command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.winniethedampoeh.quickchat.QuickChat;
@@ -28,9 +28,9 @@ public class QuickChatCommands{
     }
 
     public static void registerCommand(CommandDispatcher<FabricClientCommandSource> dispatcher1, String literal, String message){
-        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher.register(ClientCommandManager.literal(literal)
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher.register(ClientCommands.literal(literal)
             .executes(context -> sendMessage(context, message, ""))
-            .then(ClientCommandManager.argument("extra", StringArgumentType.greedyString())
+            .then(ClientCommands.argument("extra", StringArgumentType.greedyString())
                 .executes(context -> sendMessage(context, message, StringArgumentType.getString(context, "extra"))))));
     }
 
